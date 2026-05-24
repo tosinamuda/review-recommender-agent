@@ -1,0 +1,23 @@
+{
+  "cases": 6,
+  "passed": 5,
+  "failed": 1,
+  "average_score": 0.8833,
+  "rubric_pass_rate": 0.833333,
+  "rating_rmse": 0.707107,
+  "rouge_l": 0.130216,
+  "bertscore_f1": null,
+  "bertscore_enabled": false,
+  "paper_metric_inputs": {
+    "exact_rating_count": 6,
+    "reference_review_count": 6,
+    "missing": []
+  },
+  "failures": [
+    {
+      "case_id": "ng_maps_review_medplus_pharmacy_service_001",
+      "score": 0.65,
+      "feedback": "Failures: missing required term: pharmacy; missing required term: stocked"
+    }
+  ]
+}

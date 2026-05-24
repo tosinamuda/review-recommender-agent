@@ -1,0 +1,27 @@
+flowchart TD
+    classDef orchestrator fill:#1a1a2e,stroke:#e94560,color:#ffffff,font-weight:bold
+    classDef tool fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+    classDef llmAgent fill:#fef3c7,stroke:#d97706,color:#3b1a00
+    classDef io fill:#d1fae5,stroke:#059669,color:#064e3b
+
+    IN([user_persona + product_details]):::io --> ORC
+    ORC["Orchestrator — Google ADK 2.0 Workflow"]:::orchestrator
+
+    ORC --> T1
+    T1["Retrieval Tool\npersona · product · joint FAISS\n5-8 behaviorally similar exemplars"]:::tool
+
+    T1 --> G1 & G2 & G3
+
+    subgraph GEN["Generation Agent   —   dspy.Parallel x3   ·   dspy.Refine N=3 each"]
+        direction LR
+        G1["GenerateReview\nDSPy ChainOfThought"]:::llmAgent --> V1["VerifyReview\nLLM-as-Judge"]:::llmAgent
+        G2["GenerateReview\nDSPy ChainOfThought"]:::llmAgent --> V2["VerifyReview\nLLM-as-Judge"]:::llmAgent
+        G3["GenerateReview\nDSPy ChainOfThought"]:::llmAgent --> V3["VerifyReview\nLLM-as-Judge"]:::llmAgent
+    end
+
+    V1 & V2 & V3 --> SEL
+    SEL["Selection Agent\nDSPy ChainOfThought\nVerbatim pick — no synthesis"]:::llmAgent --> T4
+
+    T4["Calibration Tool\nOrdinal LogisticRegression\nrating = E[ P(1..5) ]"]:::tool --> OUT
+
+    OUT([review + star rating]):::io

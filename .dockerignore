@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.pdf
+docs/
+*.ipynb
+.git/
+.github/
+.pytest_cache/
+.ruff_cache/
+tests/
+scripts/
+tmp/
+.claude/
+.debug/
+
+# Raw Yelp dump is not needed at runtime — only pre-built indexes are
+data/yelp_dataset/
+data/raw/

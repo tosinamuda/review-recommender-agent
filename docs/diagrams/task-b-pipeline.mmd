@@ -1,0 +1,19 @@
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "18px", "fontFamily": "Arial"}, "flowchart": {"nodeSpacing": 30, "rankSpacing": 45}}}%%
+flowchart TD
+    classDef orchestrator fill:#1a1a2e,stroke:#e94560,color:#ffffff,font-weight:bold
+    classDef tool fill:#dbeafe,stroke:#2563eb,color:#1e3a5f
+    classDef llmAgent fill:#fef3c7,stroke:#d97706,color:#3b1a00
+    classDef io fill:#d1fae5,stroke:#059669,color:#064e3b
+    classDef decision fill:#f3e8ff,stroke:#7c3aed,color:#1a0033
+
+    IN(["Input\npersona + context\n+ category"]):::io --> ORC
+    ORC["Orchestrator\nGoogle ADK 2.0\nWorkflow"]:::orchestrator --> T1
+    T1["Retrieval Tool\npersona.faiss · product.faiss\nCollab signal · cold-start fallback"]:::tool --> B2
+    B2["Candidate Suitability Judge\nLLM-as-Judge\nlocale · domain · budget"]:::llmAgent --> ROUTE
+    ROUTE{"Router\ncandidate fit?"}:::decision
+    ROUTE -- sufficient --> B4A
+    ROUTE -- insufficient --> B4B
+    B4A["Ranking Agent\nfit_score\nheadline · reasoning"]:::llmAgent --> T5
+    B4B["Generation Agent\nLLM-as-Judge + Refine\ncatalogue_grounded = false"]:::llmAgent --> T5
+    T5["Validation Tool\nenforce IDs · leakage check\ntrace + evidence"]:::tool --> OUT
+    OUT(["Output\nrecs + suitability decision\n+ trace"]):::io

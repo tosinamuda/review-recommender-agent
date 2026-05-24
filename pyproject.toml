@@ -1,0 +1,55 @@
+[project]
+name = "bct-hackathon-review-simulation"
+version = "0.1.0"
+description = "Task 1 review simulation agent using ADK, DSPy, OpenRouter, and A2A."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "bert-score>=0.3.13",
+    "dspy-ai>=3.0.0",
+    "faiss-cpu>=1.13.2",
+    "fastapi>=0.121.0",
+    "google-adk[a2a]>=2.0.0b0",
+    "httpx>=0.28.0",
+    "joblib>=1.5.0",
+    "litellm!=1.82.7,!=1.82.8",
+    "scikit-learn>=1.8.0",
+    "sentence-transformers>=5.5.0",
+    "uvicorn[standard]>=0.37.0",
+]
+
+[project.scripts]
+app-dev = "app.cli:app_dev"
+app-start = "app.cli:app_start"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/app", "src/review", "src/recommendation", "src/shared"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore:The 'prefix' argument in InputField/OutputField is deprecated and has no effect in DSPy.*:DeprecationWarning:dspy\\..*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C90"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
+    "pytest-asyncio>=1.2.0",
+    "ruff>=0.14.0",
+    "ty>=0.0.37",
+]

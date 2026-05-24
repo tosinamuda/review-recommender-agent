@@ -1,0 +1,15 @@
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "15px", "fontFamily": "Arial"}, "flowchart": {"nodeSpacing": 18, "rankSpacing": 42}}}%%
+flowchart LR
+    classDef step fill:#dbeafe,stroke:#2563eb,color:#1e3a5f,font-weight:bold
+    classDef opt fill:#fef3c7,stroke:#d97706,color:#3b1a00,font-weight:bold
+
+    A["① Problem\nDefinition"]:::step
+    B["② Evaluation\nDesign"]:::step
+    C["③ Data\nDesign"]:::step
+    D["④ System\nDesign"]:::step
+    E["⑤ Implemen-\ntation"]:::step
+    F["⑥ Evaluation"]:::step
+    G["⑦ Optimisation\nLoop"]:::opt
+
+    A --> B --> C --> D --> E --> F --> G
+    G -. "iterative refinement" .-> E

@@ -1,0 +1,19 @@
+---
+# Application
+app_name: "review-recommender-agent"
+app_directory: "/opt/{{ app_name }}"
+app_port: 8000
+app_user: "www-data"
+git_repo: "https://github.com/tosinamuda/review-recommender-agent.git"
+
+# Domain
+domain_name: "review-recommender-agent.tosinamuda.com"
+www_domain: "www.{{ domain_name }}"
+
+# Nginx
+nginx_config_path: "/etc/nginx/sites-available/{{ app_name }}"
+nginx_enabled_path: "/etc/nginx/sites-enabled/{{ app_name }}"
+
+# SSL
+ssl_enabled: true
+ssl_email: "tosinamuda@gmail.com"

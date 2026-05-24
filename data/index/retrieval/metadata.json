@@ -1,0 +1,14 @@
+{
+  "axes": [
+    "persona",
+    "product",
+    "joint"
+  ],
+  "axis_weights": {
+    "joint": 0.35,
+    "persona": 0.35,
+    "product": 0.3
+  },
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "record_count": 340
+}

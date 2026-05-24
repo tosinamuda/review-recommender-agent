@@ -1,0 +1,20 @@
+[Unit]
+Description=BCT Review Recommender Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User={{ app_user }}
+Group={{ app_user }}
+WorkingDirectory={{ app_directory }}
+EnvironmentFile={{ app_directory }}/.env
+ExecStart=/usr/local/bin/uv run app-start --no-env-file
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier={{ app_name }}
+
+[Install]
+WantedBy=multi-user.target

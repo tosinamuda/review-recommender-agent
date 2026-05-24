@@ -1,0 +1,38 @@
+{
+  "cases": 28,
+  "passed": 24,
+  "failed": 4,
+  "average_score": 0.8545,
+  "rubric_pass_rate": 0.857143,
+  "rating_rmse": 0.944911,
+  "rouge_l": 0.14936,
+  "bertscore_f1": null,
+  "bertscore_enabled": false,
+  "paper_metric_inputs": {
+    "exact_rating_count": 28,
+    "reference_review_count": 28,
+    "missing": []
+  },
+  "failures": [
+    {
+      "case_id": "food_osun_corper_no_pepper",
+      "score": 0.425,
+      "feedback": "Failures: rating 4 outside expected range 2-3; missing required term: corper"
+    },
+    {
+      "case_id": "food_lagos_student_small_slow",
+      "score": 0.425,
+      "feedback": "Failures: rating 4 outside expected range 2-3; missing required term: student"
+    },
+    {
+      "case_id": "book_pacing_sensitive_reader",
+      "score": 0.425,
+      "feedback": "Failures: rating 5 outside expected range 3-4; missing required term: slow"
+    },
+    {
+      "case_id": "food_great_taste_bad_packaging",
+      "score": 0.35,
+      "feedback": "Failures: rating 2 outside expected range 3-4; forbidden term present: perfect; forbidden term present: terrible"
+    }
+  ]
+}

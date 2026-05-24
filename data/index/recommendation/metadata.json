@@ -1,0 +1,12 @@
+{
+  "case_count": 459,
+  "catalogue_path": "data/recommendation/product_catalogue.jsonl",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "indexes": [
+    "product.faiss",
+    "persona.faiss"
+  ],
+  "interactions_path": "data/recommendation/interactions.jsonl",
+  "persona_cases_path": "data/recommendation/persona_cases.jsonl",
+  "product_count": 5102
+}

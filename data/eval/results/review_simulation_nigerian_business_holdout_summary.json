@@ -1,0 +1,43 @@
+{
+  "cases": 12,
+  "passed": 7,
+  "failed": 5,
+  "average_score": 0.8187,
+  "rubric_pass_rate": 0.583333,
+  "rating_rmse": 1.658312,
+  "rouge_l": 0.125499,
+  "bertscore_f1": null,
+  "bertscore_enabled": false,
+  "paper_metric_inputs": {
+    "exact_rating_count": 12,
+    "reference_review_count": 12,
+    "missing": []
+  },
+  "failures": [
+    {
+      "case_id": "ng_review_holdout_lagos_cinema_date_001",
+      "score": 0.6,
+      "feedback": "Failures: rating 3 outside expected range 4-5"
+    },
+    {
+      "case_id": "ng_review_holdout_lagos_hospital_professional_001",
+      "score": 0.6,
+      "feedback": "Failures: rating 3 outside expected range 4-5"
+    },
+    {
+      "case_id": "ng_review_holdout_abuja_coworking_remote_001",
+      "score": 0.6,
+      "feedback": "Failures: rating 3 outside expected range 4-5"
+    },
+    {
+      "case_id": "ng_review_holdout_abuja_phone_repair_001",
+      "score": 0.6,
+      "feedback": "Failures: rating 2 outside expected range 4-5"
+    },
+    {
+      "case_id": "ng_review_holdout_kano_market_trader_001",
+      "score": 0.425,
+      "feedback": "Failures: rating 2 outside expected range 4-5; missing required term: Kano"
+    }
+  ]
+}
